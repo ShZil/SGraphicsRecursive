@@ -25,7 +25,7 @@ class Main extends Canvas {
     JFrame f = new JFrame();
 
     f.add(m);
-    f.setSize(530, 530);
+    f.setSize(550, 550);
     f.setPreferredSize(new Dimension(m.sizeX, m.sizeY));
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setVisible(true);

@@ -5,6 +5,7 @@ class SPixelGrid {
   int width;
   int height;
   final int defaultJump = 16;
+  final int delayBetweenResulotionChanges = 500;
 
   public SPixelGrid(int w, int h) {
     width = w;
@@ -48,17 +49,23 @@ class SPixelGrid {
   }
 
   public void render(Graphics gr) {
-    //for (int i = SUtil.min(width, height); i >= 1; i /= 2) {
-    int i = SUtil.min(width, height) / 4;
+    for (int i = SUtil.min(width, height); i >= 1; i /= 2) {
+      System.out.println("Frame Resulotion Change: "+i);
+      // int i = SUtil.min(width, height) / 8;
       for (int x = 0; x < width; x+=i) {
-        if (x % defaultJump == 0) {
-          System.out.println("Hello, I just rendered column #" + SUtil.formatNumber(x, 3, SUtil.CONSTANT_LENGTH));
-        }
+        // if (x % defaultJump == 0) {
+        //   System.out.println("Hello, I just rendered column #" + SUtil.formatNumber(x, 3, SUtil.CONSTANT_LENGTH));
+        // }
         for (int y = 0; y < height; y+=i) {
           pixels[x][y].render(gr, i);
         }
       }
-    //}
+      try {
+        Thread.sleep(delayBetweenResulotionChanges);
+      } catch (InterruptedException e) {
+        System.out.println(e.getMessage());
+      }
+    }
   }
 
   // Format:
