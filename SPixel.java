@@ -50,7 +50,7 @@ class SPixel {
 			render(g);
 		} else {
 			g.setColor(this.color.getColor());
-			g.drawRect(this.x, this.y, rectSize, rectSize);
+			g.fillRect(this.x, this.y, rectSize, rectSize);
 		}
 	}
 

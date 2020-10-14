@@ -41,14 +41,15 @@ class SPixelGrid {
   public void construct() {
     for (int i = 0; i < pixels.length; i++) {
       for (int j = 0; j < pixels[i].length; j++) {
-        pixels[i][j] = new SPixel(i, j, Const.BLACK);
+        // pixels[i][j] = new SPixel(i, j, Const.BLACK);
+        pixels[i][j] = new SPixel(i, j, SUtil.getRandomColor());
       }
     }
   }
 
   public void render(Graphics gr) {
     //for (int i = SUtil.min(width, height); i >= 1; i /= 2) {
-    int i = SUtil.min(width, height);
+    int i = SUtil.min(width, height) / 2;
       for (int x = 0; x < width; x+=i) {
         if (x % defaultJump == 0) {
           System.out.println("Hello, I just rendered column #" + x);

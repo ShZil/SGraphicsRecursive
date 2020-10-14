@@ -11,7 +11,7 @@ class MainExample extends Canvas {
     SGraphics g = new SGraphics(gr, sizeX, sizeY);
 
     // All the drawing attempts and syntax review here:
-    g.drawRect(new Rect(100, 100), Const.WHITE);
+    // g.drawRect(new Rect(100, 100), Const.WHITE);
 
     g.finishFrame(gr);
   }
