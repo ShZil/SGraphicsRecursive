@@ -1,35 +1,38 @@
 # SGraphicsRecursive
 ### Using a Recursive Drawing Method and a Perlin-Noise Generated Picture!
+### by @ShZil
 
 #### Options: (Found at SPixelGrid.java):
 ```java
-* final int defaultJump
+final int defaultJump
 ```
-- for printing purposes. Defines the default jump between columns, pixels, and more.
+for printing purposes. Defines the default jump between columns, pixels, and more.
 ```java
-* final int delayBetweenResolutionChanges
+final int delayBetweenResolutionChanges
 ```
 Delay measured in MILISECONDS for the Resolution to change (get 2x better, and 4x slower).
 ```java
-* final double perlinMultiplier
+final double perlinMultiplier
 ```
 The smaller the number, the less messy-looking the Grid is.
 ```java
-* final int threshold
+final int threshold
 ```
 Ranges 0 to 255. Defines a threshold for the color values (Is applied with the sigmoid).
 ```java
-* final int mode
+final int mode
 ```
 Can be Const.RGB or Const.GRAYSCALE. Defines the current drawing method, whether to use 3 different Perlin-Spaces or 1.
 
+---------------------
 
 **Based on the code from ["SGraphics by ShZil & SuperTapood"](https://github.com/SuperTapood/SGraphics).**
 Most of the code was removed (due to loss of necessity).
 
+---------------------
 
 ## Instructions (to run the code on your own computer):
-1. Download the code from this repository.
+1. Download the code from [this repository](https://github.com/ShZil/SGraphicsRecursive.git) you're in.
 2. Open the Command Line (Windows+R, type "cmd", press enter, or by any other means).
 The next three steps can be skipped if you open the repository command line:
 3. Find the repository folder on your PC using File Explorer.
