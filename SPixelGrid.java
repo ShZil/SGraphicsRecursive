@@ -11,6 +11,7 @@ class SPixelGrid {
   final int defaultJump = 512;
   final int delayBetweenResulotionChanges = 500;
   final double perlinMultiplier = 1/100.0;
+  final int threshold = 0; // 0-254
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
 
   public SPixelGrid(int w, int h) {
@@ -56,25 +57,25 @@ class SPixelGrid {
         switch (mode) {
           case Const.GRAYSCALE:
           pixels[i][j] = new SPixel(i, j, new SColor(
-          SUtil.constrain((int)(
+          SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, s_z)*255
-          ), 0, 255
+          ), threshold, 255
           )
           ));
           break;
           case Const.RGB:
           pixels[i][j] = new SPixel(i, j, new SColor(
-          SUtil.constrain((int)(
+          SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, r_z)*255
-          ), 0, 255
+          ), threshold, 255
           ),
-          SUtil.constrain((int)(
+          SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, g_z)*255
-          ), 0, 255
+          ), threshold, 255
           ),
-          SUtil.constrain((int)(
+          SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, b_z)*255
-          ), 0, 255
+          ), threshold, 255
           )
           ));
           break;

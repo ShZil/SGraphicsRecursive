@@ -127,5 +127,19 @@ class SUtil {
     }
     return val;
   }
+
+  public static int constrainColor(int val, int min, int max) {
+    if (val > max) {
+      return max;
+    }
+    if (val < min) {
+      return min;
+    }
+    return (int)(sigmoid(val / 16.0)*255);
+  }
+
+  public static double sigmoid(double val) {
+    return val / Math.pow(1 + Math.pow(val, 2), 0.5);
+  }
 }
 // The ONLY changes allowed in this class are optimization and adding functions!

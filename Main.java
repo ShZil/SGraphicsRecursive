@@ -6,8 +6,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 class Main extends Canvas {
-  int sizeX = 512;
-  int sizeY = 512;
+  int sizeX = 1024;
+  int sizeY = 1024;
 
   public void paint(Graphics gr) {
     SGraphics g = new SGraphics(gr, sizeX, sizeY);
@@ -25,7 +25,7 @@ class Main extends Canvas {
     JFrame f = new JFrame();
 
     f.add(m);
-    f.setSize(550, 550);
+    f.setSize(1060, 1060);
     f.setPreferredSize(new Dimension(m.sizeX, m.sizeY));
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setVisible(true);
