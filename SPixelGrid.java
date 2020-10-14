@@ -9,7 +9,7 @@ class SPixelGrid {
   double b_z;
   double s_z;
   final int defaultJump = 512;
-  final int delayBetweenResulotionChanges = 500;
+  final int delayBetweenResolutionChanges = 500;
   final double perlinMultiplier = 1/100.0;
   final int threshold = 0; // 0-254
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
@@ -70,7 +70,7 @@ class SPixelGrid {
 
   public void render(Graphics gr) {
     for (int i = SUtil.min(width, height); i >= 1; i /= 2) {
-      System.out.println("Frame Resulotion Change: "+i);
+      System.out.println("Frame Resolution Change: "+i);
       // int i = SUtil.min(width, height) / 8;
       for (int x = 0; x < width; x+=i) {
         // if (x % defaultJump == 0) {
@@ -81,7 +81,7 @@ class SPixelGrid {
         }
       }
       try {
-        Thread.sleep(delayBetweenResulotionChanges);
+        Thread.sleep(delayBetweenResolutionChanges);
       } catch (InterruptedException e) {
         System.out.println(e.getMessage());
       }

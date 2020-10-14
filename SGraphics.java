@@ -15,7 +15,6 @@ class SGraphics {
 	}
 
 	public void finishFrame(Graphics gr) {
-		current.evaluatePixelGrid();
 		previous = current.copy();
 		current.render(gr);
 		current.print();
