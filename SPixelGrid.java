@@ -52,7 +52,7 @@ class SPixelGrid {
     int i = SUtil.min(width, height) / 4;
       for (int x = 0; x < width; x+=i) {
         if (x % defaultJump == 0) {
-          System.out.println("Hello, I just rendered column #" + x);
+          System.out.println("Hello, I just rendered column #" + SUtil.formatNumber(x, 3, SUtil.CONSTANT_LENGTH));
         }
         for (int y = 0; y < height; y+=i) {
           pixels[x][y].render(gr);
@@ -63,17 +63,17 @@ class SPixelGrid {
 
   // Format:
   // "SPixelGrid: (width, height)
-  // [0, 0, 0, 0, 0],
-  // [0, 0, 0, 0, 0],
-  // [0, 0, 0, 0, 0],
-  // [0, 0, 0, 0, 0],
-  // [0, 0, 0, 0, 0]"
+  // [000, 000, 000, 000, 000],
+  // [000, 000, 000, 000, 000],
+  // [000, 000, 000, 000, 000],
+  // [000, 000, 000, 000, 000],
+  // [000, 000, 000, 000, 000],"
   public String toString(int jump) {
     String out = "SPixelGrid: ("+width+","+height+")\n";
     for (int i = 0; i < pixels.length - jump; i+=jump) {
       out += "[";
       for (int j = 0; j < pixels[j].length - jump; j+=jump) {
-        out += pixels[i][j].getAvg();
+        out += SUtil.formatNumber(pixels[i][j].getAvg(), 3, SUtil.CONSTANT_LENGTH);
         out += ", ";
       }
       out = out.substring(0, out.length() - 2) + "],\n[";

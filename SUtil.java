@@ -88,13 +88,13 @@ class SUtil {
   }
 
   public static String formatNumber(int number, int more, int mode) {
+    String out = "";
     switch (mode) {
       case SUtil.CONSTANT_LENGTH:
-        return multiplyString("0", more - String.valueOf(number).length()) + String.valueOf(number);
+        out = multiplyString("0", Math.abs(more - String.valueOf(number).length())) + String.valueOf(number);
         break;
     }
-    System.out.println("formatNumber failed. " + number + ", " + more + "," + mode);
-    return null;
+    return out;
   }
 
   public static String multiplyString(String s, int m) {
