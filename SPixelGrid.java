@@ -55,7 +55,7 @@ class SPixelGrid {
           System.out.println("Hello, I just rendered column #" + SUtil.formatNumber(x, 3, SUtil.CONSTANT_LENGTH));
         }
         for (int y = 0; y < height; y+=i) {
-          pixels[x][y].render(gr);
+          pixels[x][y].render(gr, i);
         }
       }
     //}

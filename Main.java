@@ -2,6 +2,8 @@ import java.awt.*;
 import javax.swing.JFrame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 class Main extends Canvas {
   int sizeX = 512;
@@ -23,7 +25,8 @@ class Main extends Canvas {
     JFrame f = new JFrame();
 
     f.add(m);
-    f.setSize(m.sizeX, m.sizeY);
+    f.setSize(530, 530);
+    f.setPreferredSize(new Dimension(m.sizeX, m.sizeY));
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setVisible(true);
 
@@ -34,6 +37,14 @@ class Main extends Canvas {
         int x = e.getX();
         int y = e.getY();
         m.repaint();
+      }
+    });
+
+    // Resize listener
+    m.addComponentListener(new ComponentAdapter() {
+      @Override
+      public void componentResized(ComponentEvent e) {
+        System.out.println("Frame Resized to " + e.getComponent().getSize());
       }
     });
   }
