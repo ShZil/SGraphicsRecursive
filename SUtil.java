@@ -1,4 +1,5 @@
 class SUtil {
+  public static final int CONSTANT_LENGTH = 0;
   // Bascially append for a fixed length array with 'null's as placeholders.
   public static Object[] replaceSingleNull(Object[] array, Object element) {
     for (int i = 0; i < array.length; i++) {
@@ -84,6 +85,24 @@ class SUtil {
 
   public static int getRandom(int max) {
     return (int)(Math.random() * max);
+  }
+
+  public static String formatNumber(int number, int more, int mode) {
+    switch (mode) {
+      case SUtil.CONSTANT_LENGTH:
+        return multiplyString("0", more - String.valueOf(number).length()) + String.valueOf(number);
+        break;
+    }
+    System.out.println("formatNumber failed. " + number + ", " + more + "," + mode);
+    return null;
+  }
+
+  public static String multiplyString(String s, int m) {
+    String t = "";
+    for (int i = 0; i < m; i++) {
+      t += s;
+    }
+    return t;
   }
 }
 // The ONLY changes allowed in this class are optimization and adding functions!

@@ -49,7 +49,7 @@ class SPixelGrid {
 
   public void render(Graphics gr) {
     //for (int i = SUtil.min(width, height); i >= 1; i /= 2) {
-    int i = SUtil.min(width, height) / 2;
+    int i = SUtil.min(width, height) / 4;
       for (int x = 0; x < width; x+=i) {
         if (x % defaultJump == 0) {
           System.out.println("Hello, I just rendered column #" + x);

@@ -51,6 +51,7 @@ class SPixel {
 		} else {
 			g.setColor(this.color.getColor());
 			g.fillRect(this.x, this.y, rectSize, rectSize);
+			System.out.println("SPixel render(Graphics, int): @("+this.x+","+this.y+") - " + rectSize);
 		}
 	}
 
