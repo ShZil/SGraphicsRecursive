@@ -4,8 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 class MainExample extends Canvas {
-  int sizeX = 500;
-  int sizeY = 500;
+  int sizeX = 512;
+  int sizeY = 512;
 
   public void paint(Graphics gr) {
     SGraphics g = new SGraphics(gr, sizeX, sizeY);

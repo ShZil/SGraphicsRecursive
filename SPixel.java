@@ -41,13 +41,17 @@ class SPixel {
 	}
 
 	public void render(Graphics g) {
-    g.setColor(this.color.getColor());
-    g.drawLine(this.x, this.y, this.x, this.y);
+		g.setColor(this.color.getColor());
+		g.drawLine(this.x, this.y, this.x, this.y);
 	}
 
 	public void render(Graphics g, int rectSize) {
-    g.setColor(this.color.getColor());
-    g.drawRect(this.x, this.y, rectSize, rectSize);
+		if (rectSize < 2) {
+			render(g);
+		} else {
+			g.setColor(this.color.getColor());
+			g.drawRect(this.x, this.y, rectSize, rectSize);
+		}
 	}
 
 	public int getAvg() {
