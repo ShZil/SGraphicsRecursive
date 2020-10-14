@@ -73,10 +73,13 @@ class SUtil {
     }
     return o;
   }
-}
 
   public static int min(int x, int y) {
     return (x < y) ? x : y;
   }
 
+  public static SColor getRandomColor() {
+
+  }
+}
 // The ONLY changes allowed in this class are optimization and adding functions!
