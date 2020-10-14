@@ -19,7 +19,7 @@ class Main extends Canvas {
   }
   public static void main(String[] args) {
     // General Java Code for every Rendering Project.
-    MainExample m = new MainExample();
+    Main m = new Main();
     JFrame f = new JFrame();
 
     f.add(m);
