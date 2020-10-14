@@ -6,6 +6,8 @@ class SPixelGrid {
   int height;
   final int defaultJump = 16;
   final int delayBetweenResulotionChanges = 500;
+  final double perlinMultiplier = 1/100.0;
+  final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
 
   public SPixelGrid(int w, int h) {
     width = w;
@@ -43,7 +45,34 @@ class SPixelGrid {
     for (int i = 0; i < pixels.length; i++) {
       for (int j = 0; j < pixels[i].length; j++) {
         // pixels[i][j] = new SPixel(i, j, Const.BLACK);
-        pixels[i][j] = new SPixel(i, j, new SColor(SUtil.constrain((int)(ImprovedNoise.noise(i, j, 0)*255), 0, 255)));
+        switch (mode) {
+          case Const.GRAYSCALE:
+            pixels[i][j] = new SPixel(i, j, new SColor(
+              SUtil.constrain((int)(
+                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 1.0)*255
+                ), 0, 255
+              )
+            ));
+          break;
+          case Const.RGB:
+            pixels[i][j] = new SPixel(i, j, new SColor(
+              SUtil.constrain((int)(
+                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 1.0)*255
+                ), 0, 255
+              ),
+              SUtil.constrain((int)(
+                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 0.5)*255
+                ), 0, 255
+              ),
+              SUtil.constrain((int)(
+                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 0)*255
+                ), 0, 255
+              )
+            ));
+          break;
+          default:
+          pixels[i][j] = new SPixel(i, j, new SColor());
+        }
       }
     }
   }
