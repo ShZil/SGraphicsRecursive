@@ -79,7 +79,11 @@ class SUtil {
   }
 
   public static SColor getRandomColor() {
+    return new SColor(getRandom(256), getRandom(256), getRandom(256));
+  }
 
+  public static int getRandom(int max) {
+    return (int)(Math.random() * max);
   }
 }
 // The ONLY changes allowed in this class are optimization and adding functions!

@@ -7,8 +7,12 @@ class SColor {
 	// red/green/blue 0-255 format.
 	// Optimization idea: use byte instead of int, and add 128 in each calculation. byte = Int.8Bit
 
-	private static int floatToInt(float x) {
+	public static int floatToInt(float x) {
 		return (int)(x * 255);
+	}
+
+	public static float intToFloat(int x) {
+		return (float)(x / 255.0f);
 	}
 
 	public SColor() {
@@ -66,9 +70,9 @@ class SColor {
 	// "GREY:brightness" or "RGB:r,g,b"
 	public String toString() {
 		if (r == g && g == b) {
-			return "GREY:"+r;
+			return "GRAY:"+SColor.intToFloat(r);
 		} else {
-			return "RGB:"+r+","+g+","+b;
+			return "RGB:"+SColor.intToFloat(r)+","+SColor.intToFloat(g)+","+SColor.intToFloat(b);
 		}
 	}
 
