@@ -28,24 +28,6 @@ class SPixelGrid {
     construct();
   }
 
-  public void drawObject(SObject o) {
-    Rect boundingBox = o.getBoundingBox();
-    for (int i = 0; i < boundingBox.getSize(); i++) {
-      Pt point = boundingBox.getPositionByIndex(i);
-      if (point == null) {
-        continue;
-      }
-      if (o.getPixel(point) == null) {
-        continue;
-      } else {
-        pixels[point.x][point.y].setColor(o.getPixel(point));
-      }
-      if (point.x % defaultJump == 0 && point.y % defaultJump == 0) {
-        System.out.println("Point was altered: X="+point.x+", Y="+point.y+", To="+o.getPixel(point).getBrightness());
-      }
-    }
-  }
-
   public void construct() {
     r_z = Math.random() * 128;
     g_z = Math.random() * 128;

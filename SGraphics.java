@@ -20,14 +20,6 @@ class SGraphics {
 		current.render(gr);
 		current.print();
 	}
-
-	public void drawRect(Rect s, SColor c) {
-		this.drawRect(s, new STexture(c));
-	}
-
-	public void drawRect(Rect s, STexture t) {
-		current.addObject(new SObject(new SRect(s), t));
-	}
 }
 
 // The java.awt.Graphics docs:
