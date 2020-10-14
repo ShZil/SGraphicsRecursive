@@ -1,8 +1,5 @@
 import java.awt.Color;
 
-// we do NOT need this class, a point can store rbg values
-// But it looks better
-
 class SColor {
 	int r;
 	int g;
@@ -75,7 +72,6 @@ class SColor {
 		}
 	}
 
-	// Get the average value of r, g, and b.
 	public int getBrightness() {
 		return (r + g + b) / 3;
 	}

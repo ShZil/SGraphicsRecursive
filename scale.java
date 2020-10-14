@@ -1,7 +1,3 @@
-// The Abstract Idea in ShZil's mind of having a class to make Pt.mult logical.
-// cool and all but why tho
-// "to make Pt.mult logical."
-
 class Scale {
   float x;
   float y;

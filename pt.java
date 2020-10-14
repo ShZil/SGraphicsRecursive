@@ -1,7 +1,6 @@
 // The Abstract Idea of a Point.
 
 class Pt {
-	// Each point in 2d has two coordinates. We're using (X,Y) - Cartesian coordinates.
 	int x;
 	int y;
 
@@ -24,9 +23,6 @@ class Pt {
 		return new Pt(this.x, this.y);
 	}
 
-	// Arithematic Operations on the Point.
-	// why would that be useful tho
-	// For example, getting the point in a rectangle relative to itself, requires sub/add. Rect.java:39=getPositionByCoordinates.
 	public Pt add(Pt other) {
 		this.x += other.x;
 		this.y += other.y;

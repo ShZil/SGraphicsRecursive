@@ -1,8 +1,6 @@
 // The Abstract Idea of a Line
 
 class Ln {
-    // Which has two points, start and end.
-    // yeah but how would you render it? You wouldn't,  This line is not render-able - It doesn't extend SObject
     Pt a;
     Pt b;
 

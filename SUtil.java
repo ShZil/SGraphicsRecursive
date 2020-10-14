@@ -38,7 +38,7 @@ class SUtil {
 
   // Stringify an array.
   public static String arrayToString(Object[] array) {
-    String s = "[";
+    String s = array.toString() + "[";
     short threeDots = (short) 0;
     for (int i = 0; i < array.length; i++) {
       if (array[i] == null) {

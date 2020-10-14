@@ -1,14 +1,11 @@
 import java.awt.Graphics;
 
 class SGraphics {
-	Graphics g; // The normal java.awt.Graphics. I think this is not really useful
-	//, since you can't put Graphics on hold like that.
-	SFrame previous = null; // The previous frame. Currently doesn't do anything,
-	//it might in the future (Optimization ideas and such)
-	SFrame current; // The current frame. Does that need explaining?
-	// Size of the canvas
-	int sizeX;// int X
-	int sizeY;// int Y
+	Graphics g;
+	SFrame previous = null;
+	SFrame current;
+	int sizeX;
+	int sizeY;
 
 	public SGraphics(Graphics g, int sizeX, int sizeY) {
 		this.g = g;
@@ -18,14 +15,12 @@ class SGraphics {
 	}
 
 	public void finishFrame(Graphics gr) {
-		// System.out.println("SGraphics.finishFrame(): "+gr);
-		current.evaluatePixelGrid(); // Converts all the SObjects to pixels and stores them
-		previous = current.copy(); // Refreah the previous frame.
-		current.render(gr); // Renders
-		current.print(); // Prints data about the operation
+		current.evaluatePixelGrid();
+		previous = current.copy();
+		current.render(gr);
+		current.print();
 	}
 
-	// draw a Rectangle
 	public void drawRect(Rect s, SColor c) {
 		this.drawRect(s, new STexture(c));
 	}

@@ -1,7 +1,6 @@
 import java.awt.Graphics;
 
 class SPixel {
-	// A pixel has a location and a color.
 	SColor color;
 	int x;
 	int y;
@@ -9,7 +8,7 @@ class SPixel {
 	public SPixel(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.color = Const.BLACK; // Default color is black
+		this.color = Const.BLACK;
 	}
 
 	public SPixel(int x, int y, SColor color) {
@@ -21,7 +20,7 @@ class SPixel {
 	public SPixel(Pt loc) {
 		this.x = loc.x;
 		this.y = loc.y;
-		this.color = Const.BLACK; // Default color is black
+		this.color = Const.BLACK;
 	}
 
 	public SPixel(Pt loc, SColor color) {
@@ -30,10 +29,9 @@ class SPixel {
 		this.color = color;
 	}
 
-	// Change the color of the pixel.
 	public void setColor(SColor to) {
-		// System.out.println("SPixel.setColor: color:"+color.toString());
 		to = to == null ? Const.BLACK : to;
+		// System.out.println("SPixel.setColor: color:"+color.toString());
 		// System.out.println("SPixel.setColor: to:"+to.toString());
 		this.color = to;
 	}
@@ -43,10 +41,13 @@ class SPixel {
 	}
 
 	public void render(Graphics g) {
-		// System.out.println("SPixel.render: Graphics g: "+g);
-		// System.out.println("SPixel.render(): this.color: "+this.color);
     g.setColor(this.color.getColor());
-    g.drawLine(this.x, this.y, this.x, this.y); // MASSIVELY NEEDS OPTIMIZATION
+    g.drawLine(this.x, this.y, this.x, this.y);
+	}
+
+	public void render(Graphics g, int rectSize) {
+    g.setColor(this.color.getColor());
+    g.drawRect(this.x, this.y, rectSize, rectSize);
 	}
 
 	public int getAvg() {
