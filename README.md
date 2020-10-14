@@ -1,7 +1,6 @@
 # SGraphicsRecursive
 ### Using a Recursive Drawing Method and a Perlin-Noise Generated Picture!
-#### by @ShZil
-@ShZil
+#### by ShZil
 
 #### Options: (Found at SPixelGrid.java):
 ```java
