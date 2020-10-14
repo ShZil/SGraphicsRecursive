@@ -104,5 +104,15 @@ class SUtil {
     }
     return t;
   }
+
+  public static int constrain(int val, int min, int max) {
+    if (val > max) {
+      return max;
+    }
+    if (val < min) {
+      return min;
+    }
+    return val;
+  }
 }
 // The ONLY changes allowed in this class are optimization and adding functions!

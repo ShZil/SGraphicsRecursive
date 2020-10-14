@@ -43,7 +43,7 @@ class SPixelGrid {
     for (int i = 0; i < pixels.length; i++) {
       for (int j = 0; j < pixels[i].length; j++) {
         // pixels[i][j] = new SPixel(i, j, Const.BLACK);
-        pixels[i][j] = new SPixel(i, j, SUtil.getRandomColor());
+        pixels[i][j] = new SPixel(i, j, new SColor(SUtil.constrain((int)(ImprovedNoise.noise(i, j, 0)*255), 0, 255)));
       }
     }
   }
