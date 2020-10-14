@@ -4,7 +4,11 @@ class SPixelGrid {
   SPixel[][] pixels;
   int width;
   int height;
-  final int defaultJump = 16;
+  double r_z;
+  double g_z;
+  double b_z;
+  double s_z;
+  final int defaultJump = 512;
   final int delayBetweenResulotionChanges = 500;
   final double perlinMultiplier = 1/100.0;
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
@@ -42,33 +46,37 @@ class SPixelGrid {
   }
 
   public void construct() {
+    r_z = Math.random() * 128;
+    g_z = Math.random() * 128;
+    b_z = Math.random() * 128;
+    s_z = Math.random() * 128;
     for (int i = 0; i < pixels.length; i++) {
       for (int j = 0; j < pixels[i].length; j++) {
         // pixels[i][j] = new SPixel(i, j, Const.BLACK);
         switch (mode) {
           case Const.GRAYSCALE:
-            pixels[i][j] = new SPixel(i, j, new SColor(
-              SUtil.constrain((int)(
-                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 1.0)*255
-                ), 0, 255
-              )
-            ));
+          pixels[i][j] = new SPixel(i, j, new SColor(
+          SUtil.constrain((int)(
+          ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, s_z)*255
+          ), 0, 255
+          )
+          ));
           break;
           case Const.RGB:
-            pixels[i][j] = new SPixel(i, j, new SColor(
-              SUtil.constrain((int)(
-                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 1.0)*255
-                ), 0, 255
-              ),
-              SUtil.constrain((int)(
-                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 0.5)*255
-                ), 0, 255
-              ),
-              SUtil.constrain((int)(
-                ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, 0)*255
-                ), 0, 255
-              )
-            ));
+          pixels[i][j] = new SPixel(i, j, new SColor(
+          SUtil.constrain((int)(
+          ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, r_z)*255
+          ), 0, 255
+          ),
+          SUtil.constrain((int)(
+          ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, g_z)*255
+          ), 0, 255
+          ),
+          SUtil.constrain((int)(
+          ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, b_z)*255
+          ), 0, 255
+          )
+          ));
           break;
           default:
           pixels[i][j] = new SPixel(i, j, new SColor());
@@ -105,16 +113,23 @@ class SPixelGrid {
   // [000, 000, 000, 000, 000],
   // [000, 000, 000, 000, 000],"
   public String toString(int jump) {
-    String out = "SPixelGrid: ("+width+","+height+")\n";
-    for (int i = 0; i < pixels.length - jump; i+=jump) {
-      out += "[";
-      for (int j = 0; j < pixels[j].length - jump; j+=jump) {
-        out += SUtil.formatNumber(pixels[i][j].getAvg(), 3, SUtil.CONSTANT_LENGTH);
-        out += ", ";
+    int decimalDigits = 5;
+    String out = "SPixelGrid: ("+width+","+height+")\nRGBS Z values: ("+
+    SUtil.formatNumber(r_z, decimalDigits, SUtil.AFTER_DOT_LIMIT)+","+
+    SUtil.formatNumber(g_z, decimalDigits, SUtil.AFTER_DOT_LIMIT)+","+
+    SUtil.formatNumber(b_z, decimalDigits, SUtil.AFTER_DOT_LIMIT)+"), "+
+    SUtil.formatNumber(s_z, decimalDigits, SUtil.AFTER_DOT_LIMIT)+"\n";
+    if (jump < pixels.length) {
+      for (int i = 0; i < pixels.length - jump; i+=jump) {
+        out += "[";
+        for (int j = 0; j < pixels[j].length - jump; j+=jump) {
+          out += SUtil.formatNumber(pixels[i][j].getAvg(), 3, SUtil.CONSTANT_LENGTH);
+          out += ", ";
+        }
+        out = out.substring(0, out.length() - 2) + "],\n[";
       }
-      out = out.substring(0, out.length() - 2) + "],\n[";
+      out = out.substring(0, out.length() - 3) + "]";
     }
-    out = out.substring(0, out.length() - 3) + "]";
     return out;
   }
 

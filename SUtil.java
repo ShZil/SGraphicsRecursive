@@ -1,5 +1,6 @@
 class SUtil {
   public static final int CONSTANT_LENGTH = 0;
+  public static final int AFTER_DOT_LIMIT = 1;
   // Bascially append for a fixed length array with 'null's as placeholders.
   public static Object[] replaceSingleNull(Object[] array, Object element) {
     for (int i = 0; i < array.length; i++) {
@@ -92,6 +93,18 @@ class SUtil {
     switch (mode) {
       case SUtil.CONSTANT_LENGTH:
         out = multiplyString("0", Math.abs(more - String.valueOf(number).length())) + String.valueOf(number);
+        break;
+    }
+    return out;
+  }
+
+  public static String formatNumber(double number, int more, int mode) {
+    String out = "";
+    switch (mode) {
+      case SUtil.AFTER_DOT_LIMIT:
+        int multiplier = (int)Math.pow(10, more);
+        double simplerDouble = ((int)(number * multiplier)) / (double)multiplier;
+        out = String.valueOf(simplerDouble);
         break;
     }
     return out;
