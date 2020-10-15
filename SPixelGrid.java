@@ -12,7 +12,7 @@ class SPixelGrid {
   final int delayBetweenResolutionChanges = 500;
   final double perlinMultiplier = 1/100.0;
   final int threshold = 0; // 0-254
-  final boolean doSigmoid = false; // Answers the question "Do the sigmoid function on the pixels' color?"
+  final boolean doSigmoid = true; // Answers the question "Do the sigmoid function on the pixels' color?"
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
 
   public SPixelGrid(int w, int h) {
