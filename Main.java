@@ -11,12 +11,6 @@ class Main extends Canvas {
 
   public void paint(Graphics gr) {
     SGraphics g = new SGraphics(gr, sizeX, sizeY);
-
-    // All the drawing attempts and syntax review here:
-    // g.drawRect(new Rect(100, 100), Const.WHITE);
-    gr.setColor(new Color(255, 0, 0));
-    gr.fillRect(10, 10, 20, 20);
-
     g.finishFrame(gr);
   }
   public static void main(String[] args) {
