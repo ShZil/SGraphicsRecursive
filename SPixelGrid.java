@@ -12,6 +12,7 @@ class SPixelGrid {
   final int delayBetweenResolutionChanges = 500;
   final double perlinMultiplier = 1/100.0;
   final int threshold = 0; // 0-254
+  final boolean doSigmoid = false; // Answers the question "Do the sigmoid function on the pixels' color?"
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
 
   public SPixelGrid(int w, int h) {
@@ -41,7 +42,7 @@ class SPixelGrid {
           pixels[i][j] = new SPixel(i, j, new SColor(
           SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, s_z)*255
-          ), threshold, 255
+          ), threshold, 255, doSigmoid
           )
           ));
           break;
@@ -49,15 +50,15 @@ class SPixelGrid {
           pixels[i][j] = new SPixel(i, j, new SColor(
           SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, r_z)*255
-          ), threshold, 255
+          ), threshold, 255, doSigmoid
           ),
           SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, g_z)*255
-          ), threshold, 255
+          ), threshold, 255, doSigmoid
           ),
           SUtil.constrainColor((int)(
           ImprovedNoise.noise(i*perlinMultiplier, j*perlinMultiplier, b_z)*255
-          ), threshold, 255
+          ), threshold, 255, doSigmoid
           )
           ));
           break;

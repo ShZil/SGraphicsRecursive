@@ -20,6 +20,10 @@ final int threshold
 ```
 Ranges `0` to `255`. Defines a threshold for the color values (Is applied with the sigmoid).
 ```java
+final boolean doSigmoid
+```
+Answers the question "Do the `sigmoid` function on the pixels' color?" 
+```java
 final int mode
 ```
 Can be `Const.RGB` or `Const.GRAYSCALE`. Defines the current drawing method, whether to use 3 different Perlin-Spaces or 1.

@@ -78,14 +78,18 @@ class SUtil {
     return val;
   }
 
-  public static int constrainColor(int val, int min, int max) {
+  public static int constrainColor(int val, int min, int max, boolean doSigmoid) {
     if (val > max) {
       return max;
     }
     if (val < min) {
       return min;
     }
-    return (int)(sigmoid(val / 16.0)*255);
+    if (doSigmoid) {
+      return (int)(sigmoid(val / 16.0)*255);
+    } else {
+      return val;
+    }
   }
 
   public static double sigmoid(double val) {
