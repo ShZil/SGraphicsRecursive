@@ -52,7 +52,7 @@ class SColor {
 	}
 
 	public SColor(float gray) {
-		int staticColor = this.floatToInt(gray);
+		int staticColor = SColor.floatToInt(gray);
 		this.r = staticColor;
 		this.g = staticColor;
 		this.b = staticColor;

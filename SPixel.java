@@ -56,6 +56,16 @@ class SPixel {
 		}
 	}
 
+	public void render(Graphics g, int rectSize, SColor toDraw) {
+		if (rectSize < 2) {
+			render(g);
+		} else {
+			g.setColor(toDraw.getColor());
+			g.fillRect(this.x, this.y, rectSize, rectSize);
+			// System.out.println("SPixel render(Graphics, int): @("+this.x+","+this.y+") - " + rectSize);
+		}
+	}
+
 	public int getAvg() {
 		return color.getBrightness();
 	}

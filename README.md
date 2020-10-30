@@ -22,7 +22,11 @@ Ranges `0` to `255`. Defines a threshold for the color values (Is applied with t
 ```java
 final boolean doSigmoid
 ```
-Answers the question "Do the `sigmoid` function on the pixels' color?" 
+Answers the question "Do the `sigmoid` function on the pixels' color?"
+```java
+final boolean doAvg = true;
+```
+Answers the question "Should I render the average or the top-left? (true = average)"
 ```java
 final int mode
 ```

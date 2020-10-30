@@ -11,8 +11,9 @@ class SPixelGrid {
   final int defaultJump = 512;
   final int delayBetweenResolutionChanges = 500;
   final double perlinMultiplier = 1/100.0;
-  final int threshold = 0; // 0-254
+  final int threshold = 100; // 0-254
   final boolean doSigmoid = true; // Answers the question "Do the sigmoid function on the pixels' color?"
+  final boolean doAvg = true; // Answers the question "Should I render the average or the top-left? (true = average)"
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
 
   public SPixelGrid(int w, int h) {
@@ -29,7 +30,7 @@ class SPixelGrid {
     construct();
   }
 
-  public void construct() {
+  public void construct() throws IllegalArgumentException {
     r_z = Math.random() * 128;
     g_z = Math.random() * 128;
     b_z = Math.random() * 128;
@@ -67,6 +68,16 @@ class SPixelGrid {
         }
       }
     }
+    checkSettingsValidity();
+  }
+
+  void checkSettingsValidity() throws IllegalArgumentException {
+    if (!isInRange(threshold, 0, 254)) throw new IllegalArgumentException("threshold is out of range [0, 254].");
+    if (!isInRange(delayBetweenResolutionChanges, 1, 10000)) throw new IllegalArgumentException("delayBetweenResolutionChanges is out of range [1, 10000].");
+  }
+
+  boolean isInRange(int x, int min, int max) {
+    return (x >= min) && (x <= max);
   }
 
   public void render(Graphics gr) {
@@ -78,7 +89,27 @@ class SPixelGrid {
         //   System.out.println("Hello, I just rendered column #" + SUtil.formatNumber(x, 3, SUtil.CONSTANT_LENGTH));
         // }
         for (int y = 0; y < height; y+=i) {
-          pixels[x][y].render(gr, i);
+          if (doAvg && i > 1) {
+            long r = 0;
+            long g = 0;
+            long b = 0;
+            for (int dx = 0; dx < i; dx++) {
+              for (int dy = 0; dy < i; dy++) {
+                int red = pixels[x + dx][y + dy].color.r;
+                int grn = pixels[x + dx][y + dy].color.g;
+                int blu = pixels[x + dx][y + dy].color.b;
+                r += red;
+                g += grn;
+                b += blu;
+              }
+            }
+            r /= i * i;
+            g /= i * i;
+            b /= i * i;
+            pixels[x][y].render(gr, i, new SColor((int)r, (int)g, (int)b));
+          } else {
+            pixels[x][y].render(gr, i);
+          }
         }
       }
       try {
