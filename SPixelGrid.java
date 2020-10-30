@@ -11,7 +11,7 @@ class SPixelGrid {
   final int defaultJump = 512;
   final int delayBetweenResolutionChanges = 500;
   final double perlinMultiplier = 1/100.0;
-  final int threshold = 100; // 0-254
+  final int threshold = 0; // 0-254
   final boolean doSigmoid = true; // Answers the question "Do the sigmoid function on the pixels' color?"
   final boolean doAvg = true; // Answers the question "Should I render the average or the top-left? (true = average)"
   final int mode = Const.RGB; // Const.RGB or Const.GRAYSCALE
